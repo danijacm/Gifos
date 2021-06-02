@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifos</title>
+    <script src="./js/gifos.js" ></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <header>
+        <div id="header_container" class="container_header">
+            <img id="logo_ppal" class="logo" src="./img/logo-mobile.svg" alt="Logo">
+            <div class="menu-mobile">
+                <input type="checkbox" id="check-menu" class="check-burguer">
+                <label id="label_burguer" for="check-menu" class="label-burguer">                
+                    <span id="linea1" class="linea-burguer linea-sup"></span>
+                    <span id="linea2" class="linea-burguer linea-med"></span>
+                    <span id="linea3" class="linea-burguer linea-inf"></span>
+                </label>    
+                <nav id="nav_bar" class="nav-bar">
+                    <ul class="list-nav">
+                        <li class="list-item"> <a id="m_dark_mode" class="link-menu-bar" href="#">Modo Nocturno</a></li>
+                        <li class="list-item"><a class="link-menu-bar" href="#">Favoritos</a></li>
+                        <li class="list-item"><a class="link-menu-bar" href="#">Mis GIFOS</a></li>
+                      
+                    </ul>
+                </nav>     
+            </div>
+            <div class="menu-desktop">
+                <nav class="nav-bar">
+                    <ul class="list-nav">
+                        <li id="d_dark_mode" class="list-item"> <a class="link-menu-bar" href="#">Modo Nocturmo</a></li>
+                        <li class="list-item"><a class="link-menu-bar" href="#">Favoritos</a></li>
+                        <li class="list-item"><a class="link-menu-bar" href="">Mis GIFOS</a></li>
+                    </ul>
+                </nav>     
+            </div>                 
+        </div> 
+    </header>
+    <section id="sec_search" class="section-search">
+        <div class="container_buscador">
+            <div class="box_title_home">
+                <h1 id="title_home" class="title-home">Inspírate, busca, guarda, y crea los mejores <span class="gifos_txt">GIFOS</span> </h1>
+            </div>
+            <div class="box-img-search">
+                <img class="img_search" src="./img/ilustra_header.svg" alt="Logo">
+            </div>
+            <div class="box_buscador">
+                <input id="input_search" class="buscador" type="text" placeholder="           Busca GIFOS y más">
+                <img id="logo_lupa" class="img_lupa_purple" src="./img/icon-search.svg" alt="Lupa">
+                <!-- <span class="icon-lupa"><i class="fal fa-search"></i></span> -->
+            </div>
+            <div class="box_trending">
+                <h3 id="label_trending" class="label-trending">Trending:</h3>
+                <p id="parrafo_trend" class="parrafo-trend">Reactionsm Entertainment, Sports, Stickers, Artists</p>
+                <!-- <h1 class="title_busqueda">Mascotas</h1> -->
+            </div>
+        </div>         
+    </section>
+    <section id="rta_search" class="result-search">
+
+    </section>
+    <section id="sec_trending" class="trending-section">
+        <div class="box-trending-title">
+            <h1 id="trending_title" class="trending-title">Trending GIFOS</h1>
+            <p id="trending_txt" class="trending-txt">Mira los últimos GIFOS de nuestra comunidad</p>
+        </div>
+        <div id="box_trend_gif" class="box-trending-gifos">
+            <!-- <div class="box-gifo">
+                <img id="img_gifo1" class="img-gifo" src="./img/gifo1.png" alt="Img Gifo">
+            </div>
+            <div class="box-gifo">
+                <img id="img_gifo2" class="img-gifo" src="./img/gifo2.png" alt="Img Gifo">
+            </div>
+            <div class="box-gifo">
+                <img id="img_gifo3" class="img-gifo" src="./img/gifo3.png" alt="Img Gifo">
+            </div> -->
+        </div>
+    </section>
+    <section id="footer" class="footer-section">
+        <h3 id="foot_txt1" class="foot-txt1">Compartir en:</h3>
+        <div class="socialMediaBox">
+                <!-- <img src="./img/icon_facebook_noc.svg" alt="logo facebook" class="iconRed">
+                <img src="./img/icon-twitter.svg" alt="logo twitter" class="iconRed">
+                <img src="./img/icon_instagram.svg" alt="logo instagram" class="iconRed">  --> 
+                <span class="iconRed"><i class="fab fa-facebook-f"></i></span>
+                <span class="iconRed"><i class="fab fa-twitter"></i></span>   
+                <span class="iconRed"><i class="fab fa-instagram"></i></span>            
+                    
+        </div>
+        <h3 id="foot_txt2" class="foot-txt2">© GIFOS 2021 All Rights Reserved.</h3>
+
+    </section>
+</body>
+</html>
