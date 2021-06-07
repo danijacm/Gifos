@@ -44,7 +44,7 @@
     margin-right: 27px;
     margin-top: 10px;
 }
-#check-menu{
+#check_menu{
     display: none;
 }
 .linea-burguer{
@@ -52,7 +52,7 @@
     height: 2px;
     background-color:#572EE5;
 }
-.menu-mobile .nav-bar{
+/*.menu-mobile .nav-bar{
     position: absolute;
     height: 484px;
     left: 0;
@@ -61,16 +61,33 @@
     background-color:rgba(87,46,229,0.90);
     transition: all 500ms ease;
     z-index: 1;
+}*/
+.nav-bar{
+    position: absolute;
+    height: 484px;
+    left: 0;
+    width: 100%;
+    /* top: -1000px; */
+    top: 95px;
+    display: none;
+    background-color:rgba(87,46,229,0.90);
+     transition: all 500ms ease;
+    z-index: 1;
 }
 .nav-bar-dark{
     position: absolute;
     height: 484px;
     left: 0;
     width: 100%;
-    top: -1000px;
+    /*top: -1000px;*/
+    top: 95px;
+    display: none;
     background-color: #000000;
     transition: all 500ms ease;
     z-index: 1;
+}
+.show-nav-bar{
+    display: block;
 }
 .list-nav{
     list-style: none;
@@ -101,19 +118,19 @@
 }
 
 
-#check-menu:checked ~ .nav-bar{
+ /*#check_menu:checked ~ .nav-bar{
     top: 95px;
 }
 
-#check-menu:checked ~ .nav-bar-dark{
+#check_menu:checked ~ .nav-bar-dark{
     top: 95px;
-}
+}*/ 
 
-#check-menu:checked+ .label-burguer .linea-sup{
+#check_menu:checked+ .label-burguer .linea-sup{
     display: none;
 }
 
-#check-menu:checked+ .label-burguer .linea-med{
+#check_menu:checked+ .label-burguer .linea-med{
     transform: rotate(45deg);
     width: 20px;
 }
