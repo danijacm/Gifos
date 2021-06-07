@@ -32,10 +32,10 @@
     width: 48.8px;
     height: 48.8px;  
     margin-left: 22px;
-    margin-top: 29px;
+    margin-top: 26px;
     margin-bottom: 17px;
 }
-.label-burguer{
+/*.label-burguer{
     width: 20px;
     height: 20px;
     display: flex;
@@ -43,15 +43,23 @@
     justify-content: space-around;
     margin-right: 27px;
     margin-top: 10px;
+}*/
+.logo-burguer{
+    width: 15px;
+    height: 14px;
+    margin-right: 26px;
+}
+.logo-close-burg{
+    src: './img/Button-close-hover-modo-noc.svg'; 
 }
 #check_menu{
     display: none;
 }
-.linea-burguer{
+/*.linea-burguer{
     width: 14px;
     height: 2px;
     background-color:#572EE5;
-}
+}*/
 /*.menu-mobile .nav-bar{
     position: absolute;
     height: 484px;

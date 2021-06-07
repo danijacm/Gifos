@@ -1,5 +1,5 @@
 import {getTrendingGif} from './promises.js';
-import {renderTrendingGifos, changeModeAction, loadInitMode} from './home.js';
+import {renderTrendingGifos, changeModeAction, loadInitMode, changeIconBurguer} from './home.js';
 
 window.onload = () => {
    let flagDark;    
@@ -7,27 +7,8 @@ window.onload = () => {
    let logo_lupa = document.getElementById('logo_lupa');
    let input_search = document.getElementById('input_search');
    let nav_bar = document.getElementById('nav_bar');
-   let label_burguer = document.getElementById('label_burguer');
-
-   /*flagDark = localStorage.getItem('flagDark');
-   console.log('flagDark:' + flagDark);
-   if(flagDark != null){
-    console.log('Entro al if...');
-    console.log(typeof(flagDark));
-    
-       if(flagDark === 'true'){
-        flagDark = false;
-        console.log('csmbio a ' + flagDark);
-       }
-       else{
-        flagDark = true;
-       }    
-        console.log('Cambio de modo...' + flagDark);
-        flagDark = changeModeAction(flagDark);
-   }
-   else{
-    flagDark = false;
-   }*/
+   let logo_burguer = document.getElementById('logo_burguer');
+   let changeIcon = false;
 
    flagDark = loadInitMode();
 
@@ -40,10 +21,12 @@ window.onload = () => {
         flagDark = changeModeAction(flagDark);
         localStorage.setItem("flagDark", flagDark);
         nav_bar.classList.toggle('show-nav-bar');
+        changeIcon = changeIconBurguer(flagDark, changeIcon);
     });
 
-    label_burguer.addEventListener('click', () => {
+    logo_burguer.addEventListener('click', () => {
         nav_bar.classList.toggle('show-nav-bar');
+        changeIcon = changeIconBurguer(flagDark, changeIcon);
     });
 
     input_search.addEventListener('keypress', (event) => {
