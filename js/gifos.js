@@ -1,5 +1,5 @@
-import {getTrendingGif} from './promises.js';
-import {renderTrendingGifos, changeModeAction, loadInitMode, changeIconBurguer} from './home.js';
+import {getTrendingGif, getGifos} from './promises.js';
+import {renderTrendingGifos, changeModeAction, loadInitMode, changeIconBurguer, renderSearchedGifos} from './home.js';
 
 window.onload = () => {
    let flagDark;    
@@ -14,6 +14,7 @@ window.onload = () => {
 
     getTrendingGif().then(
     (response) => {
+        //console.log(response);
         renderTrendingGifos(response);
      })
 
@@ -30,24 +31,34 @@ window.onload = () => {
     });
 
     input_search.addEventListener('keypress', (event) => {
-
-        if(flagDark === false){
-            logo_lupa.setAttribute('src', './img/close.svg');
+        if(input_search.changeModeAction != ""){
+            if(flagDark === false){
+                logo_lupa.setAttribute('src', './img/close.svg');
+            }
+            else{
+                logo_lupa.setAttribute('src', './img/close-modo-noct.svg');
+            }    
         }
-        else{
-            logo_lupa.setAttribute('src', './img/close-modo-noct.svg');
-        }
-        /*if(event.key=="Enter"){
-            getMovie(title_movie.value).then(
+        if(event.key=="Enter"){
+            let word = input_search.value;
+            //console.log("Busqueda: " + word);
+            getGifos(word).then(
                 (response) => {
                     console.log(response);
-                    renderInfoMovie(response);
-                }
-            )
-        }*/
+                    renderSearchedGifos(response, word);
+                 })
+        }
     })
 
     logo_lupa.addEventListener('click', () => {
+        //console.log("Input: " + input_search.value);
+        if(input_search.value){
+            getGifos(input_search.value).then(
+                (response) => {
+                    //console.log(response);
+                    renderSearchedGifos(response, input_search.value);
+                 })
+        }        
         if(flagDark === false){
             logo_lupa.setAttribute('src', './img/icon-search.svg');
             input_search.value = "";

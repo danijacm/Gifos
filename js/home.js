@@ -8,9 +8,27 @@ let trending_title = document.getElementById('trending_title');
 let trending_txt = document.getElementById('trending_txt');
 let foot_txt1 = document.getElementById('foot_txt1');
 let foot_txt2 = document.getElementById('foot_txt2');
+/*let rta_search = document.getElementById('rta_search');*/
+
 
 
     
+export function renderSearchedGifos(response, title){
+    let box_results = document.getElementById('box_results');
+    box_results.innerHTML = "";
+    for (let i = 0; i < response.pagination.count; i++) {
+        let newElement = document.createElement('img');
+        newElement.setAttribute('id', `gifo${i+1}`);
+        newElement.setAttribute('src', `${response.data[i].images.original.url}`);
+        newElement.setAttribute('alt', `Gif No${i}`);
+        newElement.classList.add('result-gif');
+        box_results.appendChild(newElement);
+    }
+    document.getElementById('rta_search').style.display = 'block';
+    let title_search = document.getElementById('title_search');
+    title_search.textContent = title;    
+}
+
 
 export function renderTrendingGifos(response){
     let box_trend_gif = document.getElementById('box_trend_gif');
@@ -22,6 +40,7 @@ export function renderTrendingGifos(response){
         box_trend_gif.appendChild(newElement);
     }
 }
+
 
 function drawIconBurguer(flagDark){
     let logo_burguer = document.getElementById('logo_burguer');

@@ -35,31 +35,16 @@
     margin-top: 26px;
     margin-bottom: 17px;
 }
-/*.label-burguer{
-    width: 20px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-right: 27px;
-    margin-top: 10px;
-}*/
+
 .logo-burguer{
     width: 15px;
     height: 14px;
     margin-right: 26px;
 }
-.logo-close-burg{
-    src: './img/Button-close-hover-modo-noc.svg'; 
-}
+
 #check_menu{
     display: none;
 }
-/*.linea-burguer{
-    width: 14px;
-    height: 2px;
-    background-color:#572EE5;
-}*/
 /*.menu-mobile .nav-bar{
     position: absolute;
     height: 484px;
@@ -204,6 +189,7 @@
     font-size: 16px;
     color: #000000;
     text-align: left;
+    padding-left: 50px;
 }
 
 .buscador_dark{
@@ -215,7 +201,7 @@
     top: 2px;
     right: 11%;
 }
-.box_trending{
+.box-trending{
     width: 70.3vw;
     margin-top: 31px;
     text-align: center;
@@ -236,6 +222,7 @@
     width: 90%;
     margin-left: 5%;
     margin-top: 2px;
+    margin-bottom: 35px;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #572EE5;
@@ -245,7 +232,16 @@
 .parrafo-trend-dark{
     color: #FFFFFF;
 }
-
+.gray-line{
+    width: 50%;
+    height: 2px;
+    background-color: #9CAFC3;
+    opacity: 0.5;
+    content: "";
+    margin: 0 auto 0;
+    margin-bottom: 43px;
+    display: none;
+}
 /*.trending_txt::after{
     display: block;
     width: 50%;
@@ -262,6 +258,46 @@
     color: #572EE5;
     text-align: center;
     line-height: 40px;    
+}
+
+/*------------------------SECTION RESULTS---------------------------------*/
+
+.result-search{
+    width: 100vw;
+    display: none;
+}
+.box-results{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 50px;
+}
+.result-gif{
+    width: 42.5%;
+    height: 120px;
+    margin-bottom: 25px;
+}
+.btn-ver-mas{
+    width: 40%;
+    height: 50px;
+    border: 1px solid #572EE5;
+    border-radius: 25px;
+    background-color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #572EE5;
+    letter-spacing: 0;
+    margin-bottom: 50px;
+    margin-left: 30%;
+}
+.title-search{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 38px;
 }
 
 /*-------------------------SECCION TRENDING--------------------------------*/
