@@ -1,5 +1,6 @@
 import {getTrendingGif, getGifos} from './promises.js';
-import {renderTrendingGifos, changeModeAction, loadInitMode, changeIconBurguer, renderSearchedGifos} from './home.js';
+import {renderTrendingGifos, changeModeAction, loadInitMode, changeIconBurguer, 
+        renderSearchedGifos, showGifosSection} from './home.js';
 
 window.onload = () => {
    let flagDark;    
@@ -9,17 +10,20 @@ window.onload = () => {
    let nav_bar = document.getElementById('nav_bar');
    let logo_burguer = document.getElementById('logo_burguer');
    let changeIcon = false;
+   let showGif = false;
 
-   flagDark = loadInitMode();
+   flagDark = loadInitMode(showGif);
+   //console.log('flagDark - line15 = ' + flagDark);
 
     getTrendingGif().then(
     (response) => {
-        //console.log(response);
+        console.log(response);
+        //saveTrendGifos(response);
         renderTrendingGifos(response);
      })
 
     m_dark_mode.addEventListener('click', () => {
-        flagDark = changeModeAction(flagDark);
+        flagDark = changeModeAction(showGif, flagDark);
         localStorage.setItem("flagDark", flagDark);
         nav_bar.classList.toggle('show-nav-bar');
         changeIcon = changeIconBurguer(flagDark, changeIcon);
@@ -31,41 +35,57 @@ window.onload = () => {
     });
 
     input_search.addEventListener('keypress', (event) => {
-        if(input_search.changeModeAction != ""){
-            if(flagDark === false){
-                logo_lupa.setAttribute('src', './img/close.svg');
-            }
-            else{
-                logo_lupa.setAttribute('src', './img/close-modo-noct.svg');
-            }    
-        }
+        /* console.log(event.code); */
         if(event.key=="Enter"){
             let word = input_search.value;
             //console.log("Busqueda: " + word);
             getGifos(word).then(
                 (response) => {
-                    console.log(response);
-                    renderSearchedGifos(response, word);
+                    //console.log(response);
+                    //console.log('flagDark - line44 = ' + flagDark);
+                    renderSearchedGifos(response, word, flagDark);
+                    showGif = true;
                  })
+        }
+    })
+
+    input_search.addEventListener('keydown', (event) => {
+        let KeyID = event.key;
+        if(KeyID === 'Backspace'){
+            if(input_search.value.length === 1){
+                if(flagDark === false){
+                    logo_lupa.setAttribute('src', './img/icon-search.svg');
+                }
+                else{
+                    logo_lupa.setAttribute('src', './img/icon-search-modo-noct.svg');
+                } 
+            }
         }
     })
 
     logo_lupa.addEventListener('click', () => {
         //console.log("Input: " + input_search.value);
-        if(input_search.value){
-            getGifos(input_search.value).then(
-                (response) => {
-                    //console.log(response);
-                    renderSearchedGifos(response, input_search.value);
-                 })
-        }        
-        if(flagDark === false){
-            logo_lupa.setAttribute('src', './img/icon-search.svg');
-            input_search.value = "";
+        if(showGif === false){
+            let word = input_search.value;
+            if(word != ""){
+                getGifos(word).then(
+                    (response) => {
+                        //console.log(response);
+                        renderSearchedGifos(response, word, flagDark);
+                        showGif = true;
+                     })
+            }
         }
         else{
-            logo_lupa.setAttribute('src', './img/icon-search-modo-noct.svg');
+            showGif = false;
             input_search.value = "";
-        }
+            showGifosSection(false, "");
+            if(flagDark === false){
+                logo_lupa.setAttribute('src', './img/icon-search.svg');
+            }
+            else{
+                logo_lupa.setAttribute('src', './img/icon-search-modo-noct.svg');
+            } 
+        }       
     });
 }

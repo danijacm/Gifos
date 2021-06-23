@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*:root{
+    background-color: #FFFFFF;
+    opacity: 10%;
+}*/
+
+.logo{
+    opacity: 10%;
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    border-top: 5px solid #572EE5;
+}
+.container-gifo{
+    width: 100vw;
+}
+.img-gifo-zoom{
+    margin-top: 60px;
+    width: 85%;
+    margin-left: 7.5%;
+}
+.gif-options{
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+.gif-info{
+    margin-left: 29.5px;
+}
+.gif-user{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 6px;
+}
+.title-gif{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+}
+.icon-opts{
+    margin-right: 7.5%;
+}
+.fav-icon{
+    padding-right: 29px;
+}
+.dwld-icon{
+    border: 1px solid #9CAFC3;
+    border-radius: 6px;
+    border-radius: 6px;
+}

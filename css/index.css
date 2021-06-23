@@ -17,7 +17,7 @@
 }
 
 /*---------------ESTILOS PARA EL HEADER-------------------*/
-.container_header{
+.header-container{
     width: 100vw;
     height: 95px;
     display: flex;
@@ -388,7 +388,7 @@
     color: #CDD6E0;
 }
 
-.foot-txt1-dark, .foot-txt2-dark, .trending-txt-dark, .trending-title-dark{
+.foot-txt1-dark, .foot-txt2-dark, .trending-txt-dark, .trending-title-dark, .title-search-dark{
     color: #FFFFFF;
 }
 .footer-section-dark{

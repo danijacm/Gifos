@@ -1,3 +1,6 @@
+//import {renderZoomGif} from './zooGif.js';
+
+
 let logo_ppal = document.getElementById('logo_ppal'); 
 let title_home = document.getElementById('title_home');
 let nav_bar = document.getElementById('nav_bar');
@@ -8,12 +11,46 @@ let trending_title = document.getElementById('trending_title');
 let trending_txt = document.getElementById('trending_txt');
 let foot_txt1 = document.getElementById('foot_txt1');
 let foot_txt2 = document.getElementById('foot_txt2');
+let title_search = document.getElementById('title_search');
 /*let rta_search = document.getElementById('rta_search');*/
+let m_dark_mode = document.getElementById('m_dark_mode');
 
 
+/*export function saveTrendGifos(response){
+    let rtaCode = response.meta.status;
+    let trendGifArray = [];
+    //console.log(typeof(rtaCode));
+    if(rtaCode === 200){
+        for (let i = 0; i < response.pagination.count; i++) {
+            trendGifArray.push(response.data[i]);
+            //trendGifArray.push(response[i]);
+        }
+        localStorage.setItem("trendGifArray", JSON.stringify(trendGifArray));
+    }
+}*/
+
+export function showGifosSection(showSection, title, flagDark){
+    console.log('flagDark = ' + flagDark);
+    if(showSection){
+        document.getElementById('rta_search').style.display = 'block';
+        document.getElementById('gray_line').style.display = 'block';
+        title_search.textContent = title;
+        
+        if(flagDark){
+            title_search.classList.add('title-search-dark');
+        }
+        else{
+            title_search.classList.remove('title-search-dark');
+        }
+    }
+    else{
+        document.getElementById('rta_search').style.display = 'none';
+        document.getElementById('gray_line').style.display = 'none';
+    }
+}
 
     
-export function renderSearchedGifos(response, title){
+export function renderSearchedGifos(response, title, flagDark){
     let box_results = document.getElementById('box_results');
     box_results.innerHTML = "";
     for (let i = 0; i < response.pagination.count; i++) {
@@ -24,13 +61,18 @@ export function renderSearchedGifos(response, title){
         newElement.classList.add('result-gif');
         box_results.appendChild(newElement);
     }
-    document.getElementById('rta_search').style.display = 'block';
-    let title_search = document.getElementById('title_search');
-    title_search.textContent = title;    
+    showGifosSection(true, title, flagDark);
+    if(flagDark === false){
+        logo_lupa.setAttribute('src', './img/close.svg');
+    }
+    else{
+        logo_lupa.setAttribute('src', './img/close-modo-noct.svg');
+    }    
 }
 
 
 export function renderTrendingGifos(response){
+    let img_gifo;
     let box_trend_gif = document.getElementById('box_trend_gif');
     for (let i = 0; i < response.data.length; i++) {
         let newElement = document.createElement('img');
@@ -38,6 +80,16 @@ export function renderTrendingGifos(response){
         newElement.setAttribute('src', `${response.data[i].images.original.url}`);
         newElement.classList.add('img-gifo');
         box_trend_gif.appendChild(newElement);
+
+        img_gifo = document.getElementById(`img_gifo${i+1}`); 
+        img_gifo.addEventListener("click", ()=>{
+            //console.log("Estoy en la imagen: " + (i+1));
+            //window.location.href = "./zoomGif.html";
+            //console.log(response.data[i]);
+            localStorage.setItem('trendGifo', JSON.stringify(response.data[i]));
+            window.location.href = "./zoomGif.html"; 
+            //renderZoomGif(i);
+        });
     }
 }
 
@@ -77,14 +129,35 @@ export function changeIconBurguer(flagDark, changeIcon){
     }
     return changeIcon;    
 }
+
+
+function drawIconSearch(showGif, flagDark){
+    if(showGif){
+        if(flagDark){
+            logo_lupa.setAttribute('src', './img/close-modo-noct.svg');
+        }
+        else{
+            logo_lupa.setAttribute('src', './img/close.svg');
+        }
+    }
+    else{
+        if(flagDark){
+            logo_lupa.setAttribute('src', './img/icon-search-modo-noct.svg');
+        }
+        else{
+            logo_lupa.setAttribute('src', './img/icon-search.svg');
+        }
+    }
+}
     
-export function changeModeAction(flagDark){ 
+export function changeModeAction(showGif, flagDark){ 
     if(flagDark === false){    
         flagDark = true;
         m_dark_mode.textContent = 'Modo Diurno';
         nav_bar.classList.remove('nav-bar');
         nav_bar.classList.add('nav-bar-dark');
-        logo_lupa.setAttribute('src', './img/icon-search-modo-noct.svg');
+        //logo_lupa.setAttribute('src', './img/icon-search-modo-noct.svg');
+        drawIconSearch(showGif, flagDark);
         logo_ppal.setAttribute('src', './img/logo-mobile-modo-noct.svg');
         document.getElementById('foot_txt1').classList.toggle('foot-txt-dark');                       
         document.getElementById('foot_txt2').classList.toggle('foot-txt-dark');
@@ -93,6 +166,7 @@ export function changeModeAction(flagDark){
         document.body.classList.add('dark');
         title_home.classList.add('txtColorWhite');
         input_search.classList.add('buscador_dark');
+        title_search.classList.add('title-search-dark');
         label_trending.classList.add('label-trending-dark');
         label_trending.classList.add('txtColorWhite');
         parrafo_trend.classList.add('parrafo-trend-dark');
@@ -110,13 +184,15 @@ export function changeModeAction(flagDark){
         m_dark_mode.textContent = 'Modo Nocturno';
         nav_bar.classList.remove('nav-bar-dark');
         nav_bar.classList.add('nav-bar');
-        logo_lupa.setAttribute('src', './img/icon-search.svg');
+        //logo_lupa.setAttribute('src', './img/icon-search.svg');
+        drawIconSearch(showGif, flagDark);
         logo_ppal.setAttribute('src', './img/logo-mobile.svg');
         input_search.style.color = "#000000" 
 
         document.body.classList.remove('dark');
         title_home.classList.remove('txtColorWhite');
         input_search.classList.remove('buscador_dark');
+        title_search.classList.remove('title-search-dark');
         label_trending.classList.remove('label-trending-dark');
         label_trending.classList.remove('txtColorWhite');
         parrafo_trend.classList.remove('parrafo-trend-dark');
@@ -132,7 +208,7 @@ export function changeModeAction(flagDark){
     return flagDark;
 }
 
-export function loadInitMode (){
+export function loadInitMode (showGif){
     let flagDark = JSON.parse(localStorage.getItem('flagDark'));
     if(flagDark != null){     
         if(flagDark === true){
@@ -141,7 +217,7 @@ export function loadInitMode (){
         else{
          flagDark = true;
         }
-        flagDark = changeModeAction(flagDark);    
+        flagDark = changeModeAction(showGif, flagDark);    
     }
     else{
      flagDark = false;
