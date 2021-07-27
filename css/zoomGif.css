@@ -32,7 +32,8 @@
 .gif-options{
     margin-top: 14px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-bottom: 126px;
 }
 .gif-info{
     margin-left: 29.5px;
@@ -54,10 +55,15 @@
     margin-right: 7.5%;
 }
 .fav-icon{
-    padding-right: 29px;
+    width: 30px;
+    height: 32px;
 }
-.dwld-icon{
+.box-dwld-icon, .box-fav-icon{
+    width: 36px;
+    height: 36px;
     border: 1px solid #9CAFC3;
     border-radius: 6px;
     border-radius: 6px;
+    text-align: center;
 }
+

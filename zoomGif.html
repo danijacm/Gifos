@@ -13,7 +13,7 @@
     <header>
         <div class="header-container">
             <img id="logo_ppal" class="logo" src="./img/logo-mobile.svg" alt="Logo">
-            <img id="logo_burguer" class="logo-burguer" src="./img/close.svg" alt="Icon close">
+            <img id="logo_close" class="logo-burguer" src="./img/close.svg" alt="Icon close">
         </div>
     </header>
     <section class="container-gifo">
@@ -21,13 +21,17 @@
     </section>
     <section class="gif-options">
         <div class="gif-info">
-            <h2 class="gif-user">User</h2>
-            <h1 class="title-gif">Titulo</h1>
+            <h2 id="userName" class="gif-user"></h2>
+            <h1 id="titleGifo" class="title-gif"></h1>
         </div>
-        <div class="icon-opts">
-            <img id="fav_icon" class="fav-icon" src="./img/icon-fav-hover.svg" alt="Fav Icon">    
-            <img id="dwld_icon" class="dwld-icon" src="./img/icon-download-hover.svg" alt="Download Icon">
-        </div>
+         <!--<div class="icon-opts">-->
+            <div class="box-fav-icon">
+                <img id="fav_icon" class="fav-icon" src="./img/icon-fav-hover.svg" alt="Fav Icon">
+            </div>
+            <div class="box-dwld-icon">
+                <img id="dwld_icon" class="dwld-icon" src="./img/icon-download.svg" alt="Download Icon">
+            </div>    
+        <!--</div>-->
     </section>
 </body>
 </html>

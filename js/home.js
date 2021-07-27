@@ -49,8 +49,9 @@ export function showGifosSection(showSection, title, flagDark){
     }
 }
 
-    
+//Función que dibuja los gifos buscados por el usuario    
 export function renderSearchedGifos(response, title, flagDark){
+    let gifo;
     let box_results = document.getElementById('box_results');
     box_results.innerHTML = "";
     for (let i = 0; i < response.pagination.count; i++) {
@@ -60,6 +61,12 @@ export function renderSearchedGifos(response, title, flagDark){
         newElement.setAttribute('alt', `Gif No${i}`);
         newElement.classList.add('result-gif');
         box_results.appendChild(newElement);
+        
+        gifo = document.getElementById(`gifo${i+1}`); 
+        gifo.addEventListener("click", ()=>{    
+            localStorage.setItem('selectedGif', JSON.stringify(response.data[i]));
+            window.location.href = "./zoomGif.html"; 
+        });        
     }
     showGifosSection(true, title, flagDark);
     if(flagDark === false){
@@ -70,7 +77,7 @@ export function renderSearchedGifos(response, title, flagDark){
     }    
 }
 
-
+//Función que dibuja los treding gifos
 export function renderTrendingGifos(response){
     let img_gifo;
     let box_trend_gif = document.getElementById('box_trend_gif');
@@ -83,12 +90,8 @@ export function renderTrendingGifos(response){
 
         img_gifo = document.getElementById(`img_gifo${i+1}`); 
         img_gifo.addEventListener("click", ()=>{
-            //console.log("Estoy en la imagen: " + (i+1));
-            //window.location.href = "./zoomGif.html";
-            //console.log(response.data[i]);
-            localStorage.setItem('trendGifo', JSON.stringify(response.data[i]));
+            localStorage.setItem('selectedGif', JSON.stringify(response.data[i]));
             window.location.href = "./zoomGif.html"; 
-            //renderZoomGif(i);
         });
     }
 }
